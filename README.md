@@ -5,7 +5,7 @@ Based on drdoobs tutorial at http://www.drdobbs.com/cpp/a-lightweight-logger-for
 * UML Diagram  
 ![alt text](wiki/Logger.jpg)
 
-* std::stringstream
+* std::stringstream [Read about std::stringstream](http://www.cplusplus.com/reference/sstream/stringstream/stringstream/)  
 ..*C_Stream class uses std::stringstream to collect different types of imput and append it   
 to the stringstream object.
 *  template<typename... Args>  [Read about Template Parameter Pack Here]( http://en.cppreference.com/w/cpp/language/parameter_pack)  
