@@ -5,10 +5,10 @@ Based on drdoobs tutorial at http://www.drdobbs.com/cpp/a-lightweight-logger-for
 * UML Diagram  
 ![alt text](wiki/Logger.jpg)
 
-* std::stringstream  
+* std::stringstream
 ..*C_Stream class uses std::stringstream to collect different types of imput and append it   
 to the stringstream object.
-*  template<typename... Args>  
+*  template<typename... Args>  [Read about Template Parameter Pack Here]( http://en.cppreference.com/w/cpp/language/parameter_pack)  
 ..*C_Stream class uses Template parameter pack to collect all the input and append it to
 to the stringstream object. Two member functions print() are defined:
 ```
