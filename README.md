@@ -8,7 +8,7 @@ Based on drdoobs tutorial at http://www.drdobbs.com/cpp/a-lightweight-logger-for
 * std::stringstream  
 ..*C_Stream class uses std::stringstream to collect different types of imput and append it   
 to the stringstream object.
-*  template<typename... Args>
+*  template<typename... Args>  
 ..*C_Stream class uses Template parameter pack to collect all the input and append it to
 to the stringstream object. Two member functions print() are defined:
 ```
@@ -26,3 +26,8 @@ and
           m_streamString.str("");
       }
 ```
+Member function void print(Head head, Tail... tail) is Tail recursive method  
+With every recursive call, the first parameter (head) appends m_streamString,  
+and the second (tail) is used as a parameter to the next recursive call until  
+the are no parameters. At the end when there are no parameters, the base case  
+function print() is called to write the m_streamString to the stream 
