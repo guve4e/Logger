@@ -27,7 +27,7 @@ and
       }
 ```
 Member function void print(Head head, Tail... tail) is Tail recursive method  
-With every recursive call, the first parameter (head) appends m_streamString,  
+With every recursive call, the first parameter (head) appends m_streamString(std::streamstring),  
 and the second (tail) is used as a parameter to the next recursive call until  
 the are no parameters. At the end when there are no parameters, the base case  
-function print() is called to write the m_streamString to the stream 
+function print() is called to write the m_streamString(std::streamstring) to the stream 
