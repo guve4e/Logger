@@ -8,7 +8,7 @@ class C_Stream;
 template class  Logger::C_Logger<Logger::C_Stream>;
 
 /**
- * Desctructor
+ * Destructor
  */
 Logger::I_Stream::~I_Stream() {
 
