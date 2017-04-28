@@ -10,52 +10,58 @@
 #include <mutex>
 #include <sstream>
 #include <iostream>
+#include <vector>
 
 namespace Logger {
 
-    enum Type
-    {
+    enum Type {
         Debug,
         Error,
         Warning
     };
 
-    class I_Stream
-    {
+    class I_Stream {
     public:
-        virtual void  open(const std::string& name) = 0;
-        virtual void  close() = 0;
-        virtual void  write(const std::string& msg) = 0;
+        virtual void open(const std::string &name) = 0;
+
+        virtual void close() = 0;
+
+        virtual void write(const std::string &msg) = 0;
+
         virtual ~I_Stream();
     };
 
-    class C_Stream : public I_Stream
-    {
+    class C_Stream : public I_Stream {
     private:
         std::unique_ptr<std::ofstream> m_stream;
 
     public:
         C_Stream();
+
         ~C_Stream() override;
-        void open(const std::string&) override;
+
+        void open(const std::string &) override;
+
         void close() override;
-        void write(const std::string&) override;
+
+        void write(const std::string &) override;
     };
 
-    template< typename Stream >
-    class C_Logger
-    {
+    template<typename Stream>
+    class C_Logger {
 
     private: // member variables
 
         std::stringstream m_streamString;
-        I_Stream* stream;
+        I_Stream *stream;
         std::mutex m_mutex;
 
     private: // member functions
 
         void setTime();
+
         void print();
+
         void setLogStream(Logger::Type);
 
         /**
@@ -81,7 +87,8 @@ namespace Logger {
 
     public: // member functions
 
-        C_Logger( const std::string& name );
+        C_Logger(const std::string &name);
+
         ~C_Logger();
 
         template<Logger::Type type, typename... Args>
@@ -95,6 +102,18 @@ namespace Logger {
             m_mutex.unlock();
         }
     };
+
+
+    template<typename RDBMS>
+    class C_Database {
+
+    public: // member functions
+    //private: // member functions
+        std::vector<std::string> split(const std::string&, char);
+
+    };
+
+
 };
 
 

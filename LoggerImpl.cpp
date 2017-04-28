@@ -4,8 +4,12 @@
 
 #include "LoggerImpl.h"
 
+// forward declarations
 class C_Stream;
 template class  Logger::C_Logger<Logger::C_Stream>;
+
+class MySql;
+template class  Logger::C_Database<MySql>;
 
 /**
  * Destructor
@@ -136,6 +140,32 @@ void Logger::C_Logger<Stream>::setLogStream(Logger::Type type) {
             break;
         case Type::Error:
             m_streamString << "<ERROR> ";
+
             break;
     };
+}
+
+/**
+ * Splits std::string to tokens
+ *
+ * @tparam RDBMS - Type of RDBMS
+ *
+ * @param str - string to be split
+ * @param delim - char for deliminator
+ * @return std::vector of std::strings
+ */
+template< typename RDBMS>
+std::vector<std::string> Logger::C_Database<RDBMS>::split(const std::string& str, char delim) {
+
+    std::vector<std::string> tokens; // will collect all the tokens
+    // convert to string-stream so we can use std::getline
+    std::stringstream stream;
+    stream.str(str);
+    std::string token;
+
+    while (std::getline(stream, token, delim)) {
+        tokens.emplace_back(token);
+    }
+
+    return tokens;
 }
