@@ -102,18 +102,6 @@ namespace Logger {
             m_mutex.unlock();
         }
     };
-
-
-    template<typename RDBMS>
-    class C_Database {
-
-    public: // member functions
-    //private: // member functions
-        std::vector<std::string> split(const std::string&, char);
-
-    };
-
-
 };
 
 
